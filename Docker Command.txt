@@ -1,0 +1,33 @@
+sudo usermode -aG docker Username:- To add user in group
+grep /etc/group: To check user in a group 
+docker run:- To start a Container
+docker ps:- To list all running containers
+docker ps -a:- To list all containers
+docker stop:- To stop a container
+docker rm:- To Remove a container
+docker images:- To List images
+docker rmi:- to remove images
+docker pull:- to download an image
+docker run ubantu:- to run uabntu
+docker run ubantu sleep 5:- Sleep ubantu for 5 second
+docker exec:- To execute a command
+Ex:- docker exec image name cat /etc/hosts
+Run - attach and detach:-
+docker run kodekloud/simple-webapp:- Port 8080
+For Detach:- docker run -d kodekloud/simple-webapp
+For Attach:- docker run containerID
+For get internal ip address:- To inspect command
+docker inspect container_ID or name
+history:- To check command history.
+Docker Images command:-
+docker pull imagename:- to download image
+docker push imagename:- to push docker hub image
+docker bulid:- bulid image
+docker bulid -t :- give tag image 
+docker run -it ubuntu bash:- open ubuntu bash terminal
+docker inspect:- to inspect the properties of a container
+docker-compose up:- to bring up the entire application stack.
+docker voulme creaet data_voluem:- to create volume
+docker run -v data_volume:/var/lib/mysql mysql:- run the docker container using the docker run command I could mount this volume inside the docker containers
+docker system df:- i want to see the actual space consumption on the disk 
+docker system df -v:- see a breakdown by image you can actually run the same command with -v 

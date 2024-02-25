@@ -1,0 +1,151 @@
+Why do you need docker?
+Docker streamlines the development lifecycle by allowing developers to work in standardized environments using local containers which provide your applications and services.
+
+What are containers?
+Containers are completely isolated environments As in they can own proccesses or services their own network interfaces their own mount just like virtual machines except they all share the same OS kernel.
+Different types of containers are:-
+LXC, LXD, LXCFS etc. Docker utilizes LXC containers setting up these container environments
+
+Containers vs Virtual machines
+Containers:- Containers are lightweight software packages that contain all the dependencies required to execute the contained software application. These dependencies include things like system libraries, external third-party code packages, and other operating system level applications. The dependencies included in a container exist in stack levels that are higher than the operating system.
+Virtual machine:- Virtual machines are heavy software packages that provide complete emulation of low level hardware devices like CPU, Disk and Networking devices. Virtual machines may also include a complementary software stack to run on the emulated hardware. These hardware and software packages combined produce a fully functional snapshot of a computational system.
+
+how to install in package in docker
+For Ansible:- docker run ansible
+For MongoDB:- docker run mongodb
+For Redis:- docker run redis
+For Nodejs:- docker run nodejs
+
+container vs image:-
+An imange is a package or template just like a VM template that you might have worked with in the virtualization world.
+It is use to create one or more containers
+Containers are running instance of images that are isolated and have their own environment and setof proccesses 
+
+Docker has two types of edition
+	Community edition
+	Enterprise edition
+
+Community edtion is the set of free Docker products the Enterprise edition is certified and supported container platform that comes with enterprise add-ons like the image management image security and universal control plan for managing and orchestrating container run times.
+
+Community Edition:- community edition is available on Linux Mac windows or on cloud platforms like AWS or Azure
+
+Docker Commands:-
+run:- start a container
+the docker run command is used to run a container from an image running the docker run nginx command
+ex:- docker run nginx
+ps:- list containers
+The docker appears command list all running containers and some basic information about them.
+ex:- docker ps
+docker ps -a:- this command to list all containers, This output all running as well as perviously stopped or exited containers.
+stop:- stop a container
+Use the docker stop command but you must provide either the container I.D. or the container name.
+ex:- docker stop silly_sammet => (silly_sammet is a container name)
+
+Docker run:-
+docker run redis:- To add contianer to redis
+docker run redis:4.0:- To add contianer to redis version 4
+Run - STDIN
+docker run -i kodekloud/simple-prompt-docker:- -i is represent the input 
+docker run -it kodekloud/simple-prompt-docker:- -t is represent pesudo terminal
+
+Run -PORT Mapping:-
+docker run kodekloud/webapp
+docker run -p 80:5000 kodekloud/webapp:- I want to the users to access my application through port 80 on my docker host, I colud map port 80 of localhost to port 5000 on the docker container using the -p parameter in my run command
+docker run -p 8000:5000 kodekloud/webapp
+docker run -p 8001:5000 kodekloud/webapp
+docker run -p 3306:3306 mysql
+docker run -p 8306:3306 mysql
+
+RUN- Volume Mapping:-
+docker run mysql
+when we stop and remove the mysql container then container with all the data inside it gets blown away means all data is gone (remove)
+If you like to persist data, you would want to map a directory outside the container on the docker host to a directory inside the container.
+docker run -v /opt/datadir:/var/lib/mysql mysql
+This way when docker container runs it will implicitly mount the external directory to a folder inside a docker container
+This way all your data will now be stored in the external volume at opt slah data directory and thus will remain even if you delete the docker container.
+
+Inspect Container:-
+docker inspect container_name:- To additional details about a specific container use a docker inspect command
+
+Container logs:-
+docker logs container_id or name:- To checks container logs
+
+docker run -d timer
+docker run jenkins 
+To find out internal ip for docker inspect command  
+
+What is Dockerfile:-
+A docker file is simple text file with instruction to bulid image automation of Docker image creation
+From
+Run
+Cmd
+
+Docker images:- Docker images are read-only templates that contain instructions for creating a container.
+
+Docker Environment Variable:- Environment variables are key-value pairs that contain data that can be used by processes running inside a Docker container. 
+
+Docker CMD vs ENTRYPOINT:-
+CMD:- If you look at the Docker file for popular Docker images like nginx or you will see an instruction called CMD, Which stands for Command that defines the program that will run within the container.
+CMD [bash]:- is a default command
+CMD is the default set of arguments that are supplied to the ENTRYPOINT process.
+
+ENTRYPOINT:- The entry point instruction is like the command instruction, as you can specify the program that will be run when the container starts and whatever you specify on the command line this case, it will get appended to the entry point.
+ENTRYPOINT is the process that's executed inside the container. 
+
+Docker Compose:- Docker Compose is a tool for defining and running multi-container applications.
+create a configuration file in YAML format called Docker compose YAML and put together the different services and the options specific to this to running them in this file.
+Then we colud simply run a docker, compose up command to bring up the entire application stack.
+
+Download docker compose from documentation:-
+
+Docker registry:-
+A Docker registry is a system for storing and distributing Docker images with specific names
+
+Docker engine:-
+Docker Engine is an open source containerization technology for building and containerizing your applications.
+
+Docker Storage:-
+Docaker storage file system:-
+/var/lib/docker
+|
+|-aufs
+|
+|-containers
+|
+|-image
+|
+|-volumes
+
+Docker stored the files of an image and a container.
+Docker Layered Architechure:-
+Layer 1. :- Base Ubuntu Layer
+Layer 2. :- Changes in apt packages
+Layer 3. :- Changes in pip packages
+Layer 4. :- Source code
+Layer 5. :- Update Entrypoint
+Layer 6. :- Container Layer
+
+Storage Drives:-
+AUFS
+ZFS
+BTRSFS
+Device Mapper
+Overlay
+Overlay 2
+
+Ubuntu default storage drivers is AUFS
+
+Docker Networking:-
+Default Networks:- Bridge, none, host
+
+container orchestration:-
+Docker Swarm 
+kubernetes
+MESOS
+
+Docker Swarm:-Docker Swarm combine multiple docker machines together into a single cluster Docker
+
+Kubernets:-Kubernetes is an open-source container orchestration system for automating software deployment, scaling, and management.
+
+Docker vs Kubernets:-
+While Docker is a container runtime, Kubernetes is a platform for running and managing containers from many container runtimes.
