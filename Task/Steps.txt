@@ -13,8 +13,8 @@ docker run -d --name uat_container --network uat hello-world
 docker run -d --name prod_container --network prod hello-world
 
 For Communictae:-
-docker exec dev_container ping uat_container
-docker exec uat_container curl prod_container:8080
+docker exec dev_container ping uat_container give ip
+docker exec uat_container ping prod_container give ip
 
  
 Task 2: Create docker file where create MySQL database with Root user and 
