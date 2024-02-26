@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  container_dev:
+    image: alpine
+    networks:
+      - dev
+
+  container_uat:
+    image: alpine
+    networks:
+      - uat
+
+  container_prod:
+    image: alpine
+    networks:
+      - prod
+
+networks:
+  dev:
+  uat:
+  prod:
